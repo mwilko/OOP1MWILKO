@@ -20,7 +20,7 @@ namespace CMP1903M_A01_2223
 
         public override string ToString()
         {
-            return $"{Value} of {Suit}";
+            return $"{Suit} of {Value}";
         }
     }
 }

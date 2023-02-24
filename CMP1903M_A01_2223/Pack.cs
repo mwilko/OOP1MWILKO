@@ -135,19 +135,6 @@ namespace CMP1903M_A01_2223
             {
                 Console.WriteLine(card);
             }
-            ////displays card pack for the riffle shuffle
-            //else if (shuffleType == "riffle-shuffle")
-            //{
-            //    Console.WriteLine("--------- <Pack> ---------");
-            //    foreach (var card in RifflePack)
-            //    {
-            //        Console.WriteLine(card);
-            //    }
-            //}
-            //else
-            //{
-            //    Console.WriteLine($"Value '{shuffleType}' is invalid: ");
-            //}
         }
 
     }

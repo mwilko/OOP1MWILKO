@@ -11,24 +11,24 @@ namespace CMP1903M_A01_2223
         //list and objects initialised
         public static List<Card> CardPack;
         public static List<Card> RifflePack = new List<Card>();
-        public static bool fisherBool = false;
-        public static bool riffleBool = false;
-        public static bool noShuffleBool = false;
+        public static bool shufflingBool = false;
         private Random random = new Random();
-        private string[] suits = { "Hearts", "Diamonds", "Clubs", "Spades" };
-        private string[] values = { "Ace", "2", "3", "4", "5", "6", "7",
-        "8", "9", "10", "Jack", "King", "Queen" };
+
+        public int[] suits = { 1, 2, 3, 4 };
+        public int[] values = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
 
 
         public Pack()
         {
             //initialise the card pack here
             CardPack = new List<Card>();
-            foreach (string suit in suits)
+            foreach (int suit in suits)
             {
-                foreach (string value in values)
+                foreach (int value in values)
                 {
-                    CardPack.Add(new Card(suit, value));
+                    //when adding set method validation, realised the value and suit
+                    //should be swapped since they were outputted opposite
+                    CardPack.Add(new Card(value, suit));
                 }
             }
         }
@@ -44,7 +44,7 @@ namespace CMP1903M_A01_2223
             {
                 //fisher-yates shuffling algorithm 
                 int n = CardPack.Count;
-                fisherBool = true;
+                shufflingBool = true;
                 while (n > 1)
                 {
                     n--;
@@ -53,29 +53,33 @@ namespace CMP1903M_A01_2223
                     CardPack[k] = CardPack[n];
                     CardPack[n] = card;
                 }
-                //OutputPack("fisher-yates");
+                //OutputPack();
                 return true;
             }
             else if (typeOfShuffle == riffleShuffle)
             {
-                //riffle-shuffle algorithm
-                int halfPack = 52 / 2;
-                riffleBool = true;
-                List<Card> FirstHalf = CardPack.GetRange(0, halfPack);
-                List<Card> LastHalf = CardPack.GetRange(halfPack, halfPack);
-
+                //new riffle-shuffle algorithm, added after code review
+                //modified as GetRange function wouldnt take the number 52 as in input to get range from
+                //it caused Stack Over-flow. To make the program easier to understand and cut down code
+                //i tweaked it
+                int halfPack = 52/2;
+                shufflingBool = true;
                 for (int i = 0; i < halfPack; i++)
                 {
-                    RifflePack.Add(LastHalf[i]);
-                    RifflePack.Add(FirstHalf[i]);
+                    CardPack.Add(CardPack[i]);
+                    CardPack.Add(CardPack[i + halfPack]);
                 }
-                //OutputPack("riffle-shuffle");
+                    
+                //added after code review, removes first unshuffled pack from list
+                //so no need for a seperate list for the riffle-shuffle
+                CardPack.RemoveRange(0, 52);
+                OutputPack();
 
                 return true;
             }
             else if (typeOfShuffle == noShuffle)
             {
-                noShuffleBool = true;
+                shufflingBool = true;
                 return true;
             }
             else
@@ -92,30 +96,10 @@ namespace CMP1903M_A01_2223
             //the card object would have no value for the method to return
             Card card = null;
             //loop to deal card out of fisher-yates shuffled card pack
-            if (fisherBool == true)
+            if (shufflingBool == true)
             {
                 if (CardPack.Count == 0)
                 { 
-                    Console.WriteLine("Error: Pack is empty");
-                }
-                card = CardPack[0];
-                CardPack.RemoveAt(0);
-            }
-            //loop to deal card out of riffle-shuffled card pack
-            else if (riffleBool == true)
-            {
-                if (RifflePack.Count == 0)
-                {
-                    Console.WriteLine("Error: Pack is empty");
-                }
-                card = RifflePack[0];
-                RifflePack.RemoveAt(0);
-            }
-            //loop to deal card out of non-shuffled card pack
-            else if (noShuffleBool == true)
-            {
-                if (CardPack.Count == 0)
-                {
                     Console.WriteLine("Error: Pack is empty");
                 }
                 card = CardPack[0];
@@ -143,30 +127,27 @@ namespace CMP1903M_A01_2223
         }
 
         //created for testing purposes
-        public void OutputPack(string shuffleType)
+        public void OutputPack()
         {
             //displays card pack for fisher-yates shuffle
-            if (shuffleType == "fisher-yates")
+            Console.WriteLine("--------- <Pack> ---------");
+            foreach (var card in CardPack)
             {
-                Console.WriteLine("--------- <Pack> ---------");
-                foreach (var card in CardPack)
-                {
-                    Console.WriteLine(card);
-                }
+                Console.WriteLine(card);
             }
-            //displays card pack for the riffle shuffle
-            else if (shuffleType == "riffle-shuffle")
-            {
-                Console.WriteLine("--------- <Pack> ---------");
-                foreach (var card in RifflePack)
-                {
-                    Console.WriteLine(card);
-                }
-            }
-            else
-            {
-                Console.WriteLine($"Value '{shuffleType}' is invalid: ");
-            }
+            ////displays card pack for the riffle shuffle
+            //else if (shuffleType == "riffle-shuffle")
+            //{
+            //    Console.WriteLine("--------- <Pack> ---------");
+            //    foreach (var card in RifflePack)
+            //    {
+            //        Console.WriteLine(card);
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine($"Value '{shuffleType}' is invalid: ");
+            //}
         }
 
     }

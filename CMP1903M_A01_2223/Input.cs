@@ -12,7 +12,6 @@ namespace CMP1903M_A01_2223
         //validation of choice input by user
         public int GetInputAndTypeValidate(int intChoice)
         {
-
             bool isValid = false;
             do
             {

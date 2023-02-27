@@ -6,6 +6,9 @@ namespace CMP1903M_A01_2223
 {
     public class Input : RangeValidation
     {
+        //class used for range validation, seperate class was made to make it easier for
+        //problem solving/syntax errors. (Class and methods not included in base code)
+
         //property used for error message
         public string TypeError { get; } = "TypeError. Plase enter a valid value";
 

@@ -10,6 +10,10 @@ namespace CMP1903M_A01_2223
         //and ensure that it matched the criteria, has comments which help the user
         //understand what is occuring in the project and how i could improve.
         //
+        //Advantages of my code were given to me such as the informal commentation,
+        //use of static variables, use of shuffling algorithms and good error handling.
+        //Improvements were also given and i solved these by implimenting the code below.
+        //
         //Changes made to Card.cs after code reviews:
         // * Changed the properties Value and Suit to integer data types instead of string
         //   to better match the criteria and plan given in the assessement brief.

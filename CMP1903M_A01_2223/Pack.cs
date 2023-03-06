@@ -8,6 +8,22 @@ namespace CMP1903M_A01_2223
 {
     public class Pack : Input
     {
+        //---------------------------------------------------------------------------------//
+        //Code Reviews were recieved from peers, this allowed me to edit my project
+        //and ensure that it matched the criteria, has comments which help the user
+        //understand what is occuring in the project and how i could improve.
+        //
+        //Changes made to Pack.cs after code reviews:
+        // * Added a string message to each card displaying the suit which helped
+        //   the user understand what the card they were dealt is.
+        //   This improved the programs readability for the user.
+        // * Altered the Riffle-Shuffle algorithm since it was difficult to understand
+        //   as well as removing the second list, making the program more portable.
+        // * When the riffle shuffle was used. The first 52 values were removed form the
+        //   card pack since it would leave the unshuffled values. This improved the
+        //   project as the user didnt get dealt cards which werent shuffled.
+        //---------------------------------------------------------------------------------//
+
         //list and objects initialised
         public static List<Card> CardPack;
         public static List<Card> RifflePack = new List<Card>();

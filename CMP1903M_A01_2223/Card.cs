@@ -5,6 +5,23 @@ namespace CMP1903M_A01_2223
 {
     public class Card
     {
+        //---------------------------------------------------------------------------------//
+        //Code Reviews were recieved from peers, this allowed me to edit my project
+        //and ensure that it matched the criteria, has comments which help the user
+        //understand what is occuring in the project and how i could improve.
+        //
+        //Changes made to Card.cs after code reviews:
+        // * Changed the properties Value and Suit to integer data types instead of string
+        //   to better match the criteria and plan given in the assessement brief.
+        //   This also made the program to be more portable to other card game applications.
+        // * Added direct validation to the set and get methods of both Value and Suit
+        //   properties for better error handling, this ensured any other value which isnt
+        //   accepted such as 14 for Value or -1 for Suit isnt accepted. 
+        // * SuitMessage property made to display the string of which suit the card is
+        //   improving the usability of the project and making it easier for the user to
+        //   understand, set and get method validation is given.
+        //---------------------------------------------------------------------------------//
+
         //Base for the Card class.
         //Value: numbers 1 - 13
         //Suit: numbers 1 - 4
@@ -51,6 +68,7 @@ namespace CMP1903M_A01_2223
         private string _suitMessage;
         public string SuitMessage
         {
+            //added SuitMessage property to display the suit in string form after code review
             get { return _suitMessage; }
             set
             {

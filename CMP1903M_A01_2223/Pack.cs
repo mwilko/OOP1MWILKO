@@ -74,7 +74,7 @@ namespace CMP1903M_A01_2223
                 //added after code review, removes first unshuffled pack from list
                 //so no need for a seperate list for the riffle-shuffle
                 CardPack.RemoveRange(0, 52);
-                OutputPack();
+                //OutputPack();
 
                 return true;
             }

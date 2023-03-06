@@ -16,6 +16,7 @@ namespace CMP1903M_A01_2223
 
         public int[] suits = { 1, 2, 3, 4 };
         public int[] values = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+        public string[] suitMessages = { "Hearts", "Diamonds", "Clubs", "Spades" };
 
 
         public Pack()
@@ -24,12 +25,12 @@ namespace CMP1903M_A01_2223
             CardPack = new List<Card>();
             foreach (int suit in suits)
             {
-                foreach (int value in values)
-                {
-                    //when adding set method validation, realised the value and suit
-                    //should be swapped since they were outputted opposite
-                    CardPack.Add(new Card(value, suit));
-                }
+                    foreach (int value in values)
+                    {
+                        //when adding set method validation, realised the value and suit
+                        //should be swapped since they were outputted opposite
+                        CardPack.Add(new Card(value, suit));
+                    }
             }
         }
 

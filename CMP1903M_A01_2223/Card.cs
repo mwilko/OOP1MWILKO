@@ -48,6 +48,38 @@ namespace CMP1903M_A01_2223
             }
         }
 
+        private string _suitMessage;
+        public string SuitMessage
+        {
+            get { return _suitMessage; }
+            set
+            {
+                if (value == "Hearts")
+                {
+                    _suitMessage = value;
+                }
+                else if (value == "Diamonds")
+                {
+                    _suitMessage = value;
+
+                }
+                else if (value == "Clubs")
+                {
+                    _suitMessage = value;
+
+                }
+                else if (value == "Spades")
+                {
+                    _suitMessage = value;
+                }
+                else
+                {
+                    throw new Exception("Error, SuitMessage should be either:" +
+                        " Hearts, Diamonds, Clubs or Spades");
+                }
+            }
+        }
+
         public Card(int value, int suit)
         {
             this.Value = value;
@@ -56,7 +88,26 @@ namespace CMP1903M_A01_2223
 
         public override string ToString()
         {
-            return $"{Value}-{Suit}";
+            //after code review from Vibin Dewan, added if statement to display what suit
+            //the cards are in the form of an integer value and string value‹. 
+            string suitValue = "";
+            if (Suit == 1)
+            {
+                suitValue = "Hearts";
+            }
+            else if (Suit == 2)
+            {
+                suitValue = "Diamonds";
+            }
+            else if (Suit == 3)
+            {
+                suitValue = "Clubs";
+            }
+            else if (Suit == 4)
+            {
+                suitValue = "Spades";
+            }
+            return $"{Value} of {Suit} ({suitValue}) ";
         }
     }
 }
